@@ -1,11 +1,5 @@
 # Rapid Systems Hub Home Page
 
-<div align="center">
-
-[![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
-
-</div>
-
 ## Features
 
 - 💨 Tailwind CSS for styling
@@ -38,3 +32,9 @@
 - moon image
   - source: https://unsplash.com/@nasa
 - other than that, a lot of material (showcase data, copy) was taken from official Astro sources, in particular https://astro.build/blog/introducing-astro/ and https://github.com/withastro/astro.build
+
+<div align="center">
+
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
+
+</div>
