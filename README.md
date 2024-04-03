@@ -1,19 +1,44 @@
-# Rapid Systems Hub Website
+# Astro Landing Page <picture><source media="(prefers-color-scheme: dark)" srcset="https://astro.build/assets/press/astro-icon-light.png"><source media="(prefers-color-scheme: light)" srcset="https://astro.build/assets/press/astro-icon-dark.png"><img align="right" valign="center" height="79" width="63" src="https://astro.build/assets/press/astro-icon-dark.png" alt="Astro logo" /></picture>
 
-This repository contains the source code and files for a simple one-page website showcasing our digital marketing business.
+> An Astro + Tailwind CSS example/template for landing pages.
 
-## Overview
+<div align="center">
 
-The goal of this website is to provide a professional and legitimate online presence for our company, highlighting our expertise in areas such as online advertising, affiliate marketing, and coaching services. The website serves as a virtual business card, providing essential information about our team, work experience, and successful case studies.
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
 
-## Contributing
+</div>
 
-If you have any suggestions, improvements, or bug fixes, please open an issue or submit a pull request (if you're feeling nerdy).
+![Screenshots of Astro Landing Page](screenshots.jpg)
 
-## License
+## Features
 
-This project is licensed under the [MIT License](LICENSE).
+- 💨 Tailwind CSS for styling
+- 🎨 Themeable
+  - CSS variables are defined in `src/styles/theme.css` and mapped to Tailwind classes (`tailwind.config.cjs`)
+- 🌙 Dark mode
+- 📱 Responsive (layout, images, typography)
+- ♿ Accessible (as measured by https://web.dev/measure/)
+- 🔎 SEO-enabled (as measured by https://web.dev/measure/)
+- 🔗 Open Graph tags for social media sharing
+- 💅 [Prettier](https://prettier.io/) setup for both [Astro](https://github.com/withastro/prettier-plugin-astro) and [Tailwind](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 
-## Contact
+## Commands
 
-For any inquiries or questions, please contact me at [simon@rapidsystemshub.com].
+| Command                | Action                                            |
+| :--------------------- | :------------------------------------------------ |
+| `npm install`          | Install dependencies                              |
+| `npm run dev`          | Start local dev server at `localhost:4321`        |
+| `npm run build`        | Build your production site to `./dist/`           |
+| `npm run preview`      | Preview your build locally, before deploying      |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check`  |
+| `npm run astro --help` | Get help using the Astro CLI                      |
+| `npm run format`       | Format code with [Prettier](https://prettier.io/) |
+| `npm run clean`        | Remove `node_modules` and build output            |
+
+## Credits
+
+- astronaut image
+  - source: https://github.com/withastro/astro-og-image; note: this repo is not available anymore
+- moon image
+  - source: https://unsplash.com/@nasa
+- other than that, a lot of material (showcase data, copy) was taken from official Astro sources, in particular https://astro.build/blog/introducing-astro/ and https://github.com/withastro/astro.build
