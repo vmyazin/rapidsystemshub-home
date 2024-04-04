@@ -1,30 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
 import ContentSection from "~/components/content-section.astro";
+import LogoSVG from '../../public/logo-rapidly-dark.svg?raw';
 ---
 
-<ContentSection title="Just ship less" id="intro">
-  <Icon slot="eyebrow" name="logomark" class="size-32" />
+<ContentSection title="Accelerate Online Growth" id="intro">
+  <div slot="eyebrow" class="size-24 text-white md:size-32" set:html={LogoSVG} title="test" />
   <Fragment slot="lead">
-    Astro is a new kind of site builder for the
-    <span class="text-primary">modern</span> web.
-    <span class="text-primary">Lightning-fast</span>
-    performance meets <span class="text-primary">powerful</span> developer experience.
+    Digital marketing enterprise offering
+    a tailored approach to <span class="text-primary">lead generation</span>
+    and <span class="text-primary">ad campaign management</span>.
   </Fragment>
-  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+  <div class="grid">
     <a
-      href="https://docs.astro.build/"
+      href="/#contact"
       class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
     >
-      <Icon name="mdi:telescope" class="size-8" />
-      <span>Read the docs</span>
-    </a>
-    <a
-      href="https://astro.new/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon name="mdi:rocket" class="size-8" />
-      <span>Try it out</span>
+      <Icon name="mdi:eye-plus" class="size-8" />
+      <span>Stay Updated</span>
     </a>
   </div>
 </ContentSection>
