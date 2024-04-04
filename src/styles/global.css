@@ -10,3 +10,9 @@ a,
   @apply bg-clip-text text-transparent;
   @apply bg-gradient-to-br from-green-400 via-green-600 to-yellow-600;
 }
+
+.desc {
+  p {
+    @apply mb-4;
+  }
+}

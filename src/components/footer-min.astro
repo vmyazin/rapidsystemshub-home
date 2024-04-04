@@ -1,15 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-import HeroImage from "~/components/hero-image.astro";
+import bgImg from "../assets/images/bg-mosaic-dark.png";
 ---
 
-<footer class="relative flex h-64 items-center justify-center">
-  <div class="absolute inset-0 overflow-hidden opacity-40">
-    <HeroImage />
-  </div>
-
-  <div class="text-default">
-    <p>&copy; {new Date().getFullYear()} Rapid Systems Hub. All rights reserved.</p>
+<footer class="relative flex h-64 items-center justify-center" style={`background-image: url('${bgImg.src}'); background-repeat: repeat;`}>
+  <div class="text-center px-2">
+    <p class="text-white">&copy; {new Date().getFullYear()} Rapid Systems Hub. All rights reserved.</p>
   </div>
 
 </footer>
