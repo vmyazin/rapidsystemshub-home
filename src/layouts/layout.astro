@@ -3,11 +3,12 @@ import StaticHeader from "~/components/header-static.astro";
 import Footer from "~/components/footer-min.astro";
 import "@fontsource-variable/inter";
 import "~/styles/index.css";
+import { siteConfig } from '~/site.config';
+
 // Add other imports that your layout needs
 const { generator, site } = Astro;
-const image = new URL("social.jpg", site);
-const description =
-  "Build fast websites, faster. Astro is a new kind of site builder for the modern web. Lightning-fast performance meets powerful developer experience.";
+const image = new URL(siteConfig.image, site);
+const description = siteConfig.description;
 ---
 
 <!doctype html>
