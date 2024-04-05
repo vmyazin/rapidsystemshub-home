@@ -1,0 +1,79 @@
+---
+import { Icon } from "astro-icon/components";
+import ThemeSwitcher from "~/components/theme-switcher.astro";
+import LogoSVG from '../../public/logo-rapidly-over-white.svg?raw';
+import type { NavItem } from "~/types";
+
+const navItems: Array<NavItem> = [
+  { title: "About", url: "#intro" },
+  { title: "Contact", url: "#contact" },
+];
+---
+
+<header
+  id="page-header"
+  class="fixed bg-black top-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
+>
+  <a class="flex items-center gap-3 hover:!text-default" href="/">
+    <div class="size-10 text-white md:size-12" set:html={LogoSVG} />
+    <h1>Rapid Systems Hub</h1>
+  </a>
+  <div>
+    <div class="flex items-center gap-6">
+      <nav class="hidden sm:block">
+        <ul class="flex items-center gap-6">
+          {
+            navItems.map(({ title, url }) => (
+              <li>
+                <a class="text-sm" href={url}>
+                  {title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <button
+        id="open-nav-button"
+        type="button"
+        class="btn sm:hidden"
+        aria-label="Navigation"
+      >
+        <Icon name="mdi:menu" class="size-8" />
+      </button>
+      <ThemeSwitcher />
+    </div>
+    <div id="menu-modal" class="modal hidden" aria-hidden="true">
+      <div class="fixed inset-0 bg-default px-8 py-4 text-default">
+        <div class="space-y-4" role="dialog" aria-modal="true">
+          <header class="text-right">
+            <button
+              id="close-nav-button"
+              type="button"
+              class="btn"
+              aria-label="Close navigation"
+            >
+              <Icon name="mdi:close" class="size-8" />
+            </button>
+          </header>
+          <div class="flex justify-center">
+            <Icon name="logomark" class="size-16" />
+          </div>
+          <nav>
+            <ul class="flex flex-col">
+              {
+                navItems.map(({ title, url }) => (
+                  <li>
+                    <a class="block py-4 text-center text-xl" href={url}>
+                      {title}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
