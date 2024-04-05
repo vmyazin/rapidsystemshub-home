@@ -1,0 +1,29 @@
+---
+import ContentSection from "./content-section.astro";
+import MicrosoftLogo from '../assets/logos/logo-ms-ads-outline-fill.svg?raw';
+import GoogleLogo from '../assets/logos/logo-google-ads-outline-fill.svg?raw';
+import MetaLogo from '../assets/logos/logo-meta-ads-outline-fill.svg?raw';
+---
+
+<ContentSection title="Ad Platforms" id="ad-platforms">
+  <Fragment slot="lead">
+    Each platform requires its own <span class="text-primary">approach</span> and <span class="text-primary">customization</span>.
+  </Fragment>
+  
+  <ul class="grid max-w-6xl mx-auto grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <li class="flex flex-col items-center border-2 border-black bg-white p-6">
+      <div class="size-20 text-white md:size-32" set:html={MicrosoftLogo} />
+      <h3 class="text-center font-bold text-xl">Microsoft Ads</h3>
+    </li>
+  
+    <li class="flex flex-col items-center border-2 border-black bg-white p-6">
+      <div class="size-20 text-white md:size-32" set:html={MetaLogo} />
+      <h3 class="text-center font-bold text-xl">Meta Ads</h3>
+    </li>
+  
+    <li class="flex flex-col items-center border-2 border-black bg-white p-6">
+      <div class="size-20 text-white md:size-32" set:html={GoogleLogo} />
+      <h3 class="text-center font-bold text-xl">Google Ads</h3>
+    </li>
+  </ul>  
+</ContentSection>
