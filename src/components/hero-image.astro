@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import moonImage from "~/assets/moon.jpg";
+import bgImage from "~/assets/images/starry.jpg";
 
 const widths = [450, 800, 1200];
 const sizes = "100vw";
@@ -8,8 +8,8 @@ const sizes = "100vw";
 
 <Image
   class="h-full w-full object-cover"
-  src={moonImage}
+  src={bgImage}
   widths={widths}
   sizes={sizes}
-  alt="The ridged surface of the moon"
+  alt="Starry sky"
 />
