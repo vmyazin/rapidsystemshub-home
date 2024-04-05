@@ -2,13 +2,8 @@
 import { Icon } from "astro-icon/components";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import LogoSVG from '../../public/logo-rapidly-over-white.svg?raw';
-import type { NavItem } from "~/types";
+import { navItems, mobileOnlyNavItems } from "~/nav-config";
 import MenuModal from "./menu-modal.astro";
-
-const navItems: Array<NavItem> = [
-  { title: "About", url: "/#intro" },
-  { title: "Contact", url: "/#contact" },
-];
 ---
 
 <header
@@ -44,7 +39,7 @@ const navItems: Array<NavItem> = [
       </button>
       <ThemeSwitcher />
     </div>
-    <MenuModal client:load navItems={navItems} />
+    <MenuModal client:load navItems={navItems} mobileOnlyNavItems={mobileOnlyNavItems} />
   </div>
 </header>
 

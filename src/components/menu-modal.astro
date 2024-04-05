@@ -4,9 +4,10 @@ import type { NavItem } from "~/types";
 
 interface Props {
   navItems: Array<NavItem>;
+  mobileOnlyNavItems?: Array<NavItem>;
 }
 
-const { navItems } = Astro.props;
+const { navItems, mobileOnlyNavItems = [] } = Astro.props;
 ---
 
 <div id="menu-modal" class="modal hidden" aria-hidden="true">
@@ -23,6 +24,13 @@ const { navItems } = Astro.props;
       <nav>
         <ul class="flex flex-col">
           {navItems.map(({ title, url }) => (
+            <li>
+              <a class="block py-4 text-center text-xl" href={url}>
+                {title}
+              </a>
+            </li>
+          ))}
+          {mobileOnlyNavItems.map(({ title, url }) => (
             <li>
               <a class="block py-4 text-center text-xl" href={url}>
                 {title}
