@@ -8,7 +8,6 @@ import { siteConfig } from '~/site.config';
 // Add other imports that your layout needs
 const { generator, site } = Astro;
 const image = new URL(siteConfig.image, site);
-const description = siteConfig.description;
 ---
 
 <!doctype html>
@@ -20,13 +19,13 @@ const description = siteConfig.description;
     <link rel="icon" href="/logo-rapidly-dark.svg" type="image/svg+xml" /> 
     <meta name="generator" content={generator} />
 
-    <title>Astro Landing Page</title>
-    <meta name="description" content={description} />
+    <title>{siteConfig.sitename}</title>
+    <meta name="description" content={siteConfig.description} />
 
     <!-- social media -->
-    <meta property="og:title" content="Astro" />
+    <meta property="og:title" content={siteConfig.sitename} />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={siteConfig.description} />
     <meta property="og:image" content={image} />
     <meta property="og:url" content={site} />
     <meta name="twitter:card" content="summary_large_image" />
