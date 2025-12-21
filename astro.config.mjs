@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-    site: process.env.SITE_URL || "https://www.rapidsystemshub.com/",
+    site: "https://www.rapidsystemshub.com/",
     output: "static",
     adapter: vercel({
         webAnalytics: { enabled: true },
