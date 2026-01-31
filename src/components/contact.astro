@@ -105,8 +105,12 @@ import ContactForm from "./contact-form.astro";
       });
 
       try {
+        // Use Cloudflare Worker endpoint
+        // Replace with your actual Cloudflare Worker URL after deployment
+        const workerUrl = import.meta.env.PUBLIC_CONTACT_FORM_URL || "https://contact-form-worker.YOUR_SUBDOMAIN.workers.dev";
+        
         const response = await fetch(
-          "https://klvj2mr8ua.execute-api.us-east-1.amazonaws.com/prod",
+          workerUrl,
           {
             method: "POST",
             headers: {

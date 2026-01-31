@@ -42,9 +42,17 @@ The contact form includes multiple layers of security:
 - **Client-side rate limiting**: 2-minute cooldown between submissions
 - **Input validation**: Email format, length limits, and character restrictions
 - **Header injection prevention**: Strips dangerous characters that could manipulate email headers
-- **Server-side validation**: Reference implementation in `lambda-function-reference.js`
+- **Server-side validation**: Cloudflare Worker with rate limiting and suppression list checking
 
-See `MIGRATION.md` for detailed information about the pnpm migration and package updates.
+## Contact Form Backend
+
+The contact form is handled by a **Cloudflare Worker** that processes submissions and sends emails via Resend.
+
+- **Deployment**: See `cloudflare/README.md` for setup instructions
+- **Migration**: See `cloudflare/MIGRATION.md` for migration from AWS SES
+- **Environment**: Set `PUBLIC_CONTACT_FORM_URL` to your Cloudflare Worker URL
+
+See `MIGRATION.md` for pnpm migration details and `cloudflare/` for backend deployment.
 
 ## Credits
 

@@ -1,0 +1,10 @@
+name = "contact-form-worker"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# KV Namespace binding
+# After creating KV namespace with: wrangler kv:namespace create "SUBMISSIONS_KV"
+# Add the namespace ID here:
+# [[kv_namespaces]]
+# binding = "SUBMISSIONS_KV"
+# id = "YOUR_KV_NAMESPACE_ID"

@@ -68,7 +68,7 @@ This update includes comprehensive security measures for the contact form:
 - Email header injection prevention
 - Timestamp-based replay attack prevention
 
-See `lambda-function-reference.js` for backend security implementation.
+See `cloudflare/worker.js` for backend security implementation.
 
 ## Benefits of pnpm
 
