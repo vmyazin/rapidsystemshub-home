@@ -11,19 +11,40 @@
 - 🔎 SEO-enabled (as measured by https://web.dev/measure/)
 - 🔗 Open Graph tags for social media sharing
 - 💅 [Prettier](https://prettier.io/) setup for both [Astro](https://github.com/withastro/prettier-plugin-astro) and [Tailwind](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+- 🛡️ Security-hardened contact form with honeypot, rate limiting, and input validation
+
+## Package Manager
+
+This project uses **pnpm** for faster and more efficient dependency management.
+
+Install pnpm globally:
+```bash
+npm install -g pnpm
+```
 
 ## Commands
 
-| Command                | Action                                            |
-| :--------------------- | :------------------------------------------------ |
-| `npm install`          | Install dependencies                              |
-| `npm run dev`          | Start local dev server at `localhost:4321`        |
-| `npm run build`        | Build your production site to `./dist/`           |
-| `npm run preview`      | Preview your build locally, before deploying      |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check`  |
-| `npm run astro --help` | Get help using the Astro CLI                      |
-| `npm run format`       | Format code with [Prettier](https://prettier.io/) |
-| `npm run clean`        | Remove `node_modules` and build output            |
+| Command                 | Action                                            |
+| :---------------------- | :------------------------------------------------ |
+| `pnpm install`          | Install dependencies                              |
+| `pnpm dev`              | Start local dev server at `localhost:4321`        |
+| `pnpm build`            | Build your production site to `./dist/`           |
+| `pnpm preview`          | Preview your build locally, before deploying      |
+| `pnpm astro ...`        | Run CLI commands like `astro add`, `astro check`  |
+| `pnpm astro --help`     | Get help using the Astro CLI                      |
+| `pnpm format`           | Format code with [Prettier](https://prettier.io/) |
+| `pnpm clean`            | Remove `node_modules` and build output            |
+
+## Security
+
+The contact form includes multiple layers of security:
+- **Honeypot field**: Invisible field that bots fill out, triggering silent rejection
+- **Client-side rate limiting**: 2-minute cooldown between submissions
+- **Input validation**: Email format, length limits, and character restrictions
+- **Header injection prevention**: Strips dangerous characters that could manipulate email headers
+- **Server-side validation**: Reference implementation in `lambda-function-reference.js`
+
+See `MIGRATION.md` for detailed information about the pnpm migration and package updates.
 
 ## Credits
 

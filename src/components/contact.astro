@@ -16,14 +16,92 @@ import ContactForm from "./contact-form.astro";
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
     const thankYouMessage = document.getElementById("thankYouMessage");
+    const RATE_LIMIT_KEY = "formSubmitTimestamp";
+    const RATE_LIMIT_MINUTES = 2;
+
+    // Input sanitization helper
+    function sanitizeInput(input: string): string {
+      // Remove potential email header injection characters
+      return input
+        .replace(/[\r\n]/g, "") // Remove newlines
+        .replace(/[<>]/g, "") // Remove angle brackets
+        .trim()
+        .substring(0, 1000); // Limit length
+    }
+
+    // Email validation helper
+    function isValidEmail(email: string): boolean {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email) && !email.includes("..") && email.length <= 254;
+    }
+
+    // Rate limiting check
+    function checkRateLimit(): boolean {
+      const lastSubmit = localStorage.getItem(RATE_LIMIT_KEY);
+      if (lastSubmit) {
+        const timeDiff = Date.now() - parseInt(lastSubmit);
+        const minutesPassed = timeDiff / (1000 * 60);
+        if (minutesPassed < RATE_LIMIT_MINUTES) {
+          const waitTime = Math.ceil(RATE_LIMIT_MINUTES - minutesPassed);
+          alert(`Please wait ${waitTime} minute(s) before submitting again.`);
+          return false;
+        }
+      }
+      return true;
+    }
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      // Check client-side rate limit
+      if (!checkRateLimit()) {
+        return;
+      }
+
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
+      // Honeypot check - if filled, it's a bot
+      if (data.website && data.website.toString().length > 0) {
+        console.log("Bot detected");
+        // Silent fail - don't tell the bot it was caught
+        form.reset();
+        return;
+      }
+
+      // Validate and sanitize inputs
+      const name = sanitizeInput(data.name.toString());
+      const email = sanitizeInput(data.email.toString());
+      const message = sanitizeInput(data.message.toString());
+
+      // Validate email format
+      if (!isValidEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      // Validate name and message aren't empty after sanitization
+      if (!name || name.length < 2) {
+        alert("Please enter a valid name (at least 2 characters).");
+        return;
+      }
+
+      if (!message || message.length < 10) {
+        alert("Please enter a message (at least 10 characters).");
+        return;
+      }
+
+      // Prepare sanitized data
+      const sanitizedData = {
+        name: name,
+        email: email,
+        message: message,
+        optIn: data.optIn === "on" ? true : false,
+        timestamp: Date.now(),
+      };
+
       const body = JSON.stringify({
-        body: JSON.stringify(data), // Nesting the JSON.stringify to match the expected server format
+        body: JSON.stringify(sanitizedData),
       });
 
       try {
@@ -41,15 +119,20 @@ import ContactForm from "./contact-form.astro";
         console.log(response);
 
         if (response.ok) {
-          const firstName = data.name.toString().split(" ")[0];
+          // Set rate limit timestamp
+          localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
+          
+          const firstName = name.split(" ")[0];
           thankYouMessage.textContent = `Thank you, ${firstName}, for your message. We will get back to you soon.`;
           thankYouMessage.classList.remove("hidden");
           form.reset();
         } else {
           console.error("Failed to send email.");
+          alert("Failed to send message. Please try again later.");
         }
       } catch (error) {
         console.error("Error sending email:", error);
+        alert("An error occurred. Please try again later.");
       }
     });
   });
